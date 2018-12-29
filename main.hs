@@ -1,7 +1,7 @@
-import WordFitSolver
+import qualified WordFitSolver as Solver
 
 main = do
-    let m = matrix [
+    let m = Solver.matrix [
          "JULIETCARESS",
          "WEDDINGROMEO",
          "CHOCOLATERGF",
@@ -56,9 +56,9 @@ main = do
          "JULIET",
          "LOVE",
          "LUCK"  ]
-    let matrixCombinations = combinations m
-    let cells = concat (map (\word -> matchedPoints matrixCombinations word) words)
+    let combinations = Solver.combinations m
+    let matchedPoints = concat $ map (\word -> Solver.matchedPoints combinations word) words
     putStrLn "Matrix:\n"
-    printMatrix m
+    Solver.printMatrix m
     putStrLn "\nSolution:\n"
-    printSolution m cells
+    Solver.printSolution m matchedPoints
